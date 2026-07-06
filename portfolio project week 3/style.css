@@ -1,0 +1,518 @@
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   COLOR SCHEME & TYPOGRAPHY
+   Teal grounds the "technical/DBMS" side, plum is the single accent used for
+   interaction (links, focus, hover) so it always signals "you can act here."
+   ========================================================================== */
+:root {
+  --bg: #eef3f1;
+  --surface: #ffffff;
+  --ink: #1b2b28;
+  --muted: #5c6b67;
+
+  --teal: #1f6f5c;
+  --teal-light: #d7ede4;
+  --plum: #7a4fae;
+  --plum-light: #ede4f7;
+
+  --border: #d6e0dc;
+  --radius: 10px;
+  --transition: 0.2s ease;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+main section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+main section p {
+  color: var(--muted);
+  max-width: 65ch;
+}
+
+/* ==========================================================================
+   HEADER — sticky flex bar
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--surface);
+  border-bottom: 2px solid var(--teal-light);
+}
+
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-identity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  border-radius: 50%;
+  border: 2px solid var(--teal);
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.75rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+nav a {
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--transition);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--plum);
+  transition: width var(--transition);
+}
+
+nav a:hover {
+  color: var(--plum);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.nav-toggle,
+.nav-toggle-label {
+  display: none;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: var(--plum);
+}
+
+.greeting {
+  font-family: var(--font-display);
+  color: var(--plum);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ==========================================================================
+   SKILLS — styled as a linked list / node chain
+   (a small nod to "Data Structures and Algorithms" from the skills list)
+   ========================================================================== */
+.skills-chain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.skills-chain li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.skills-chain li:hover {
+  transform: translateX(6px);
+  border-left-color: var(--plum);
+  box-shadow: 0 8px 20px rgba(31, 111, 92, 0.1);
+}
+
+.skill-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--teal);
+  min-width: 170px;
+}
+
+.skill-value {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   CONTACT — grid: info + form side by side
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.contact-info .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--teal-light);
+  color: var(--teal);
+  font-size: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+form label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+
+form input,
+form textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--bg);
+  color: var(--ink);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--plum);
+  box-shadow: 0 0 0 3px var(--plum-light);
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: var(--teal);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+button[type="submit"]:hover {
+  background-color: var(--plum);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   JS-DRIVEN STATES — form feedback, dark mode, back-to-top
+   ========================================================================== */
+
+/* --- Form validation feedback --- */
+.error-message {
+  display: block;
+  min-height: 1.1em;
+  color: #c0392b;
+  font-size: 0.8rem;
+  margin-top: 0.15rem;
+}
+
+.input-error {
+  border-color: #c0392b !important;
+}
+
+.char-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.char-count-ok {
+  color: var(--teal);
+}
+
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.status-success {
+  color: var(--teal);
+}
+
+.status-error {
+  color: #c0392b;
+}
+
+/* --- Back-to-top button --- */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--teal);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--transition), transform var(--transition), background-color var(--transition);
+  z-index: 150;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--plum);
+}
+
+/* --- Dark mode ---
+   A second color set applied only when body.dark-mode is active.
+   Everything else (layout, spacing, fonts) stays exactly the same. */
+body.dark-mode {
+  --bg: #14201d;
+  --surface: #1c2b27;
+  --ink: #eaf3f0;
+  --muted: #9db3ad;
+  --teal-light: #234a3f;
+  --border: #2b3d38;
+  --plum-light: #3a2d4d;
+}
+
+body.dark-mode header {
+  border-bottom-color: var(--border);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 700px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-toggle-label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 200;
+  }
+
+  .nav-toggle-label span {
+    width: 22px;
+    height: 2px;
+    background-color: var(--ink);
+    transition: transform var(--transition), opacity var(--transition);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 65%;
+    max-width: 260px;
+    background-color: var(--surface);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform var(--transition);
+  }
+
+  .nav-toggle:checked ~ nav {
+    transform: translateX(0);
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .header-identity {
+    gap: 0.6rem;
+  }
+
+  .logo {
+    height: 44px;
+    width: 44px;
+  }
+
+  h1 {
+    font-size: 1.15rem;
+  }
+
+  main section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .skill-label {
+    min-width: 100%;
+  }
+
+  .skills-chain li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+}

@@ -1,0 +1,104 @@
+<!--this html document is for the internship submission for developers arena-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <!-- Google Fonts: Space Grotesk for headings, Inter for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="header-identity">
+                <img src="images/intershiplogo.png" alt="casual intership logo" class="logo" height="60" width="60">
+                <div>
+                    <h1>Malla Dhatri Tejasvi</h1>
+                    <p class="tagline">My Internship Project</p>
+                </div>
+            </div>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <p class="eyebrow">01 / about</p>
+            <h2>About Me</h2>
+            <p id="greeting" class="greeting"></p>
+            <p>I am a web development beginner passionate about building functional and interactive websites while
+                continuously improving my technical skills.</p>
+        </section>
+
+        <section id="skills">
+            <p class="eyebrow">02 / skills</p>
+            <h2>Skills</h2>
+            <ul class="skills-chain">
+                <li><span class="skill-label">Programming languages</span><span class="skill-value">C, Python, Java</span></li>
+                <li><span class="skill-label">DBMS</span><span class="skill-value">MySQL</span></li>
+                <li><span class="skill-label">Additional skills</span><span class="skill-value">Data Structures and Algorithms in C</span></li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <p class="eyebrow">03 / contact</p>
+            <h2>Contact</h2>
+
+            <div class="contact-grid">
+                <ul class="contact-info">
+                    <li><span class="icon">✉</span> Email: dhatri061@gmail.com</li>
+                    <li><span class="icon">☎</span> Phone: +915858585858</li>
+                </ul>
+
+                <form id="contact-form" novalidate>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name">
+                    <span class="error-message" id="name-error"></span>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email">
+                    <span class="error-message" id="email-error"></span>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="4"></textarea>
+                    <span class="char-count" id="char-count">0 / 10 characters minimum</span>
+                    <span class="error-message" id="message-error"></span>
+
+                    <button type="submit">Send</button>
+                    <p class="form-status" id="form-status" role="status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made by me with &hearts;
+            <br>Thankyou for visiting my portfolio
+        </p>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
