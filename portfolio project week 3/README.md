@@ -2,12 +2,6 @@
 
 A simple personal portfolio website built with HTML and CSS, made for my Developers Arena internship submission.
 
-## 🔗 Live Demo
-_(add your GitHub Pages link here once deployed)_
-
-## 📸 Preview
-_(add a screenshot here, e.g. `![Preview](screenshots/desktop-full.png)`)_
-
 ## ✨ Features
 - About, Skills, and Contact sections
 - Responsive design with a mobile hamburger menu
